@@ -1,27 +1,47 @@
 #include <iostream>
 #include <vector>
-#include <iomanip>
 using namespace std;
 
-//void printString(const vector<string> &);
-std::vector<string> s;
-void parenCounter(string s, int openingCount, int closingCount, int n){
-    if (openingCount && closingCount == n){
-        cout << s <<endl;
-    }else if(openingCount > closingCount){
-        parenCounter(s + "}", openingCount, closingCount + 1, n);
-    }else if (openingCount < n){
-        parenCounter(s + "{", openingCount + 1, closingCount, n);
-    }
-}
+void generateParentheses(int pos, int openingCount, int closingCount, int n);
 
 void printString(std::vector<string> const &arreglo){
     for(int i = 0; i < arreglo.size(); i++){
         std::cout << arreglo.at(i) <<" ";
     }
     cout <<endl;
+} 
+
+void printParentheses(int n){
+    if(n > 0){
+        generateParentheses(0, 0, 0, n);
+    }
+    return;
 }
+void generateParentheses(int pos, int openingCount, int closingCount, int n){
+
+    std::vector<string> s;
+    for(int i=0; i < 2*n, i++){
+        s.at(i) = i;
+    }
+    if (openingCount && closingCount == n){
+        printString(s);
+        return;
+    }else{
+        if(openingCount > closingCount){
+        s.insert(s.at(pos), "}");
+        generateParentheses(pos+1, openingCount, closingCount + 1, n);
+        } 
+        if (openingCount < n){
+        s.insert(s.at(pos), "{");
+        generateParentheses(pos+1, openingCount + 1, closingCount, n);
+        }
+    }
+}
+
 
 int main(){
 
+    //std::vector<string> s;
+    printParentheses(1);
+    return 0;
 }
