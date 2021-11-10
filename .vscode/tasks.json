@@ -1,8 +1,30 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
+            "label": "clang++ build active file",
+            "type": "shell",
+            "command": "/usr/bin/clang++",
+            "args": [
+            "-std=c++17",
+            "-stdlib=libc++",
+            "-g",
+            "${file}",
+            "-o",
+            "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+            "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+            "kind": "build",
+            "isDefault": true
+            }
+        },
+        {
             "label": "C/C++: g++.exe compilar archivo activo",
+            "type": "cppbuild",
             "command": "C:\\Strawberry\\c\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
@@ -22,7 +44,10 @@
                 "isDefault": true
             },
             "detail": "Tarea generada por el depurador."
+        },
+        {
+            "label": "Build",
+            "dependsOn": ["clang++ build active file","C/C++: g++.exe compilar archivo activo"]
         }
-    ],
-    "version": "2.0.0"
+    ]
 }

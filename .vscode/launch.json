@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Iniciar",
+            "name": "(gdb) windows",
             "type": "cppdbg",
             "request": "launch",
             "program": "C:/Users/sp/Documents/GitHub/code/a.exe",
@@ -23,6 +23,19 @@
                     "ignoreFailures": true
                 }
             ]
-        }
+        },
+        {
+            "name": "clang++ - Build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "clang++ build active file"
+          }
     ]
 }
