@@ -1,49 +1,48 @@
-//todo: mover vector afuera
 #include <iostream>
 #include <vector>
 using namespace std;
-vector<string> s;
 
-void generateParentheses(int pos, int openingCount, int closingCount, int n);
+
+void generateParentheses(int pos, int openingCount, int closingCount, int n, std::vector<string> arreglo);
 
 void printString(vector<string> arreglo){
     for(int i=0;i< arreglo.size();i++) {
-        //cout << *i <<"";
         printf("%s",arreglo[i].c_str());
     }
     cout <<endl;
 
 }
 
-void printParentheses(int n){
+void printParentheses(int n, std::vector<string> arreglo){
     if(n > 0){
-        generateParentheses(0, 0, 0, n);
+        generateParentheses(0, 0, 0, n, arreglo);
     }
     return;
 }
 
-void generateParentheses(int pos, int openingCount, int closingCount, int n){
-
-     // mover vector afuera
+void generateParentheses(int pos, int openingCount, int closingCount, int n, vector<string> arreglo){
 
     if (openingCount == n && closingCount == n){
-        printString(s);
+        printString(arreglo);
         return;
     }else{
         if(openingCount > closingCount){
-            s[pos] = '}';
-            generateParentheses(pos+1, openingCount, closingCount+1, n);
+            arreglo[pos] = '}';
+            generateParentheses(pos+1, openingCount, closingCount+1, n, arreglo);
         }
         if (openingCount < n){
-            s[pos] = '{';
-            generateParentheses(pos+1, openingCount+1, closingCount, n);
+            arreglo[pos] = '{';
+            generateParentheses(pos+1, openingCount+1, closingCount, n, arreglo);
         }
     }
 }
 
 int main(){
 
-    //std::vector<string> s;
-    printParentheses(1);
+    int parenSize;
+    cout << "Numero de parentesis por lado" <<endl;
+    cin >> parenSize;
+    vector<string> s(parenSize*2);
+    printParentheses(parenSize, s);
     return 0;
 }
