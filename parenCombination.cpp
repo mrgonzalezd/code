@@ -1,13 +1,12 @@
 //todo: mover vector afuera
-
 #include <iostream>
 #include <vector>
 using namespace std;
+vector<string> s;
 
 void generateParentheses(int pos, int openingCount, int closingCount, int n);
 
 void printString(vector<string> arreglo){
-    //for(auto i = arreglo.begin(); i != arreglo.end(); i++){
     for(int i=0;i< arreglo.size();i++) {
         //cout << *i <<"";
         printf("%s",arreglo[i].c_str());
@@ -25,8 +24,8 @@ void printParentheses(int n){
 
 void generateParentheses(int pos, int openingCount, int closingCount, int n){
 
-    vector<string> s(2*n); // mover vector afuera
-    
+     // mover vector afuera
+
     if (openingCount == n && closingCount == n){
         printString(s);
         return;
@@ -45,7 +44,6 @@ void generateParentheses(int pos, int openingCount, int closingCount, int n){
 int main(){
 
     //std::vector<string> s;
-    
     printParentheses(1);
     return 0;
 }
