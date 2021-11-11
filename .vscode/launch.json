@@ -5,15 +5,31 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "C:/Users/sp/Documents/GitHub/code/parenCombination.exe",
+            "args": ["<", "test.txt"],
+            "stopAtEntry": true,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "externalTerminal",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },        
+        {
             "name": "(gdb) windows",
             "type": "cppdbg",
             "request": "launch",
-            "program": "C:/Users/sp/Documents/GitHub/code/a.exe",
+            "program": "'{workspaceFolder}/a.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
             "miDebuggerPath": "C:/cygwin64/bin/gdb.exe",
             "setupCommands": [

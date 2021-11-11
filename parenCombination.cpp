@@ -39,9 +39,9 @@ void generateParentheses(int pos, int openingCount, int closingCount, int n, vec
 
 int main(){
 
-    int parenSize;
+    int parenSize = 2;
     cout << "Pares de parentesis a generar:" <<endl;
-    cin >> parenSize;
+    //cin >> parenSize;
     vector<string> s(parenSize*2);
     printParentheses(parenSize, s);
     return 0;
