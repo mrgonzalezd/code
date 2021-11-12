@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+int reject;
+int accept;
 
 void generateParentheses(int pos, int openingCount, int closingCount, int n, std::vector<string> arreglo);
 
@@ -24,6 +25,7 @@ void generateParentheses(int pos, int openingCount, int closingCount, int n, vec
 
     if (openingCount == n && closingCount == n){
         printString(arreglo);
+        accept++;
         return;
     }else{
         if(openingCount > closingCount){
@@ -34,7 +36,8 @@ void generateParentheses(int pos, int openingCount, int closingCount, int n, vec
             arreglo[pos] = '{';
             generateParentheses(pos+1, openingCount+1, closingCount, n, arreglo);
         }
-        cout << "stack call rejected" <<endl;
+        //cout << "stack call rejected" <<endl;
+        reject++;
     }
 }
 
@@ -45,5 +48,7 @@ int main(){
     cin >> parenSize;
     vector<string> s(parenSize*2);
     printParentheses(parenSize, s);
+    cout << "Numero de llamadas aceptadas:" << accept <<endl;
+    cout << "Numero de llamadas rechazadas:" << reject <<endl;
     return 0;
 }

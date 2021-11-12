@@ -24,7 +24,7 @@
             "name": "(gdb) windows",
             "type": "cppdbg",
             "request": "launch",
-            "program": "'{workspaceFolder}/a.exe",
+            "program": "${workspaceFolder}/a.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
