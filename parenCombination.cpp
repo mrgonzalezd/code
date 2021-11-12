@@ -34,6 +34,7 @@ void generateParentheses(int pos, int openingCount, int closingCount, int n, vec
             arreglo[pos] = '{';
             generateParentheses(pos+1, openingCount+1, closingCount, n, arreglo);
         }
+        cout << "stack call rejected" <<endl;
     }
 }
 
