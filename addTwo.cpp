@@ -16,6 +16,10 @@ public:
         ListNode* sumNode = new ListNode;
         
         while(l1 && l2 != nullptr){
+            if(carry > 0){ //check whether there's positive numbers to add into sum
+                sum += carry;   
+                carry = 0;
+            }
             if(l1){
                 sum += l1->val;
             }
@@ -23,17 +27,13 @@ public:
                 sum += l2->val;
             }
             carry = (int) sum/10;
-            if(carry > 0){
-                sum += carry;   
-                
-            }
-            //sumNode-> val = sum%10; //asign accumulated sum to the node value
-            ListNode(sumNode->val= sum%10, sumNode->next);
+            
+            ListNode* nextNode = new ListNode;
+            ListNode(sumNode->val= sum%10); //assign accumulated sum to the node value
+            sumNode->next = nextNode;
+            sumNode= sumNode->next;
             
             sum = 0;
-            
-            
-            //sumNode->next= sumNode;
             
             l1= l1->next;
             l2 =l2->next;
@@ -44,10 +44,11 @@ public:
 };
 int main(){
     Solution x;
-    ListNode b(4);
-    
+    ListNode c(3);
+    ListNode b(4, &c);
     ListNode l1(2, &b);
-    ListNode c(6);
-    ListNode l2(5, &c);
+    ListNode e(4);
+    ListNode d(6, &e);
+    ListNode l2(5, &d);
     x.addTwoNumbers(&l1, &l2);
 }
