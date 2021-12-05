@@ -5,22 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) Launch",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "C:/Users/sp/Documents/GitHub/code/parenCombination.exe",
-            "args": ["<", "test.txt"],
-            "stopAtEntry": true,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "console": "externalTerminal",
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput"
-            ]
-        },        
-        {
             "name": "(gdb) windows",
             "type": "cppdbg",
             "request": "launch",
@@ -44,7 +28,7 @@
             "name": "clang++ - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/a.out",
             "args": [],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
