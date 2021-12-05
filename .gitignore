@@ -1,5 +1,3 @@
-a.out
-a.exe
 *.out
 *.exe
-*.dSYM
+*.dSYM/*
