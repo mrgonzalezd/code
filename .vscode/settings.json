@@ -3,6 +3,8 @@
         ".gpmrc": "json",
         "vector": "cpp",
         "xstring": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "__hash_table": "cpp",
+        "unordered_map": "cpp"
     }
 }
