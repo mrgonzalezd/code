@@ -6,20 +6,22 @@
             "type": "shell",
             "command": "/usr/bin/clang++",
             "args": [
-            "-std=c++17",
-            "-stdlib=libc++",
-            "-g",
-            "${file}",
-            "-o",
-            "${fileDirname}/a.out"
+                "-std=c++17",
+                "-stdlib=libc++",
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/a.out"
             ],
             "options": {
-            "cwd": "${workspaceFolder}"
+                "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": ["$gcc"],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "group": {
-            "kind": "build",
-            "isDefault": true
+                "kind": "build",
+                "isDefault": true
             }
         },
         {
@@ -31,7 +33,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\a.exe"
+                "${fileDirname}/a.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -46,8 +48,27 @@
             "detail": "Tarea generada por el depurador."
         },
         {
-            "label": "Build",
-            "dependsOn": ["clang++ build active file","C/C++: g++.exe compilar archivo activo"]
+            "label": "(gdb) windows",
+            "type": "cppbuild",
+            "command": "C:\\Strawberry\\c\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "$a.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tarea generada por el depurador."
         }
     ]
 }

@@ -6,14 +6,16 @@ using namespace std;
 class Solution{
     public:
         int lengthOfLongestSubstring(string s){
-            /*
+            
             int n = s.length();
+            int m[(int) s.length()];
             int ans = 0;
 
             for (int i= 0; i < n; i++){
                 continue;
             }
-            return ans;*/
+            return ans;
+            /*
             int ans=0,prev=0;
             unordered_map<char,int> m;
             for(int i=0;i<s.length();i++){
@@ -30,6 +32,7 @@ class Solution{
             }
             cout << ans <<endl;
             return ans;
+            */
         }
 };
 int main(){
