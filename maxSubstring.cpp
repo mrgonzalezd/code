@@ -11,6 +11,7 @@ class Solution{
             int m[(int) s.length()];
             int ans = 0;
 
+            m[s[0]]++;
             for (int i= 0; i < n; i++){
                 continue;
             }
