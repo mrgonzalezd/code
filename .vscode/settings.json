@@ -1,10 +1,12 @@
 {
     "files.associations": {
+        "*.ejs": "html",
         ".gpmrc": "json",
         "vector": "cpp",
         "xstring": "cpp",
         "iostream": "cpp",
         "__hash_table": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "stdlib.h": "c"
     }
 }
