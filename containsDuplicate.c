@@ -15,17 +15,42 @@
     return answer;
 }*/
 
-bool containsDuplicate(int* nums, int numsSize){
+//array size too big for memory
+
+/* bool containsDuplicate(int* nums, int numsSize){
     bool answer = false;
-    for(int i = 0; i < numsSize-1; i++){
-        for(int j=i+1; j < numsSize; j++){
-            if(nums[i] == nums[j]){
-                printf("%d\n", nums[i]);
-                answer=true;
-            }
+    int nonNegValues[1000000000] = {0};
+    int negValues[1000000000] = {0};
+    for(int i=0; i < numsSize; i++){
+        if(nums[i] > -1){
+            nonNegValues[nums[i]]++;
+        }else{
+            negValues[nums[i]*-1]++;
         }
     }
-    
+    for(int i = 0; i < numsSize; i++){
+        if(nonNegValues[nums[i]] > 1 || negValues[nums[i]*-1] > 1){
+            answer=true;
+            break;
+        }
+    }
+    return answer;
+}
+ */
+
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
+
+bool containsDuplicate(int* nums, int numsSize){
+    qsort(nums, numsSize, sizeof(int), cmpfunc);
+    bool answer = false;
+    for(int i=0; i < numsSize-1; i++){
+        if(nums[i]==nums[i+1]){
+            answer = true;
+            break;
+        }
+    }
     return answer;
 }
 
