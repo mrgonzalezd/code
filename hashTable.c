@@ -15,8 +15,8 @@ typedef struct Ht_item Ht_item;
  
 // Define the Hash Table Item here
 struct Ht_item {
-    char* key;
-    char* value;
+    char *key;
+    char *value;
 };
  
 typedef struct HashTable HashTable;
@@ -49,7 +49,7 @@ HashTable* create_table(int size) {
     table->count = 0;
     table->items = (Ht_item**) calloc (table->size, sizeof(Ht_item*));
     for (int i=0; i<table->size; i++)
-        table->items[i] = NULL;
+        table->items[i] = NULL; // setting each item to mem address 0x0000000000000000
  
     return table;
 }
