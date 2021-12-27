@@ -18,13 +18,14 @@ int hashCode(int key) {
    return key % SIZE;
 }
 
+//search for the data given a key
 struct DataItem *search(int key) {
    //get the hash 
    int hashIndex = hashCode(key);  
 	
-   //move in array until an empty 
+   //move in array until it's empty
    while(hashArray[hashIndex] != NULL) {
-	
+       //move one unit the hashed index does not match the key queried
       if(hashArray[hashIndex]->key == key)
          return hashArray[hashIndex]; 
 			
@@ -39,7 +40,7 @@ struct DataItem *search(int key) {
 }
 
 void insert(int key,int data) {
-
+    //first allocate memory for the item to insert
    struct DataItem *item = (struct DataItem*) malloc(sizeof(struct DataItem));
    item->data = data;  
    item->key = key;
@@ -55,7 +56,7 @@ void insert(int key,int data) {
       //wrap around the table
       hashIndex %= SIZE;
    }
-	
+    //set the item in the hash array
    hashArray[hashIndex] = item;
 }
 
@@ -105,6 +106,7 @@ int main() {
    dummyItem->data = -1;  
    dummyItem->key = -1; 
 
+    //insert(key, value)
    insert(1, 20);
    insert(2, 70);
    insert(42, 80);
@@ -116,6 +118,7 @@ int main() {
    insert(37, 97);
 
    display();
+   //search for the data given a key
    item = search(37);
 
    if(item != NULL) {
