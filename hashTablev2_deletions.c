@@ -36,7 +36,7 @@ struct HashTable {
     // Contains an array of pointers
     // to items
     Ht_item** items;
-    LinkedList** overflow_buckets; //new addition after v0
+    LinkedList** overflow_buckets;
     int size;
     int count;
 };
@@ -197,9 +197,9 @@ void ht_insert(HashTable* table, char* key, char* value) {
     // Compute the index
     unsigned long index = hash_function(key);
  
-    Ht_item* current_item = table->items[index]; //there is nothing here yet
+    Ht_item* current_item = table->items[index];
      
-    if (current_item == NULL) { //insertion process begins 
+    if (current_item == NULL) {
         // Key does not exist.
         if (table->count == table->size) {
             // Hash Table Full
@@ -242,10 +242,73 @@ char* ht_search(HashTable* table, char* key) {
             return item->value;
         if (head == NULL)
             return NULL;
-        item = head->item;//moving to head
+        item = head->item;
         head = head->next;
     }
     return NULL;
+}
+ 
+void ht_delete(HashTable* table, char* key) {
+    // Deletes an item from the table
+    int index = hash_function(key);
+    Ht_item* item = table->items[index];
+    LinkedList* head = table->overflow_buckets[index];
+ 
+    if (item == NULL) {
+        // Does not exist. Return
+        return;
+    }
+    else {
+        if (head == NULL && strcmp(item->key, key) == 0) {
+            // No collision chain. Remove the item
+            // and set table index to NULL
+            table->items[index] = NULL;
+            free_item(item);
+            table->count--;
+            return;
+        }
+        else if (head != NULL) {
+            // Collision Chain exists
+            if (strcmp(item->key, key) == 0) {
+                // Remove this item and set the head of the list
+                // as the new item
+                 
+                free_item(item);
+                LinkedList* node = head;
+                head = head->next;
+                node->next = NULL;
+                table->items[index] = create_item(node->item->key, node->item->value);
+                free_linkedlist(node);
+                table->overflow_buckets[index] = head;
+                return;
+            }
+ 
+            LinkedList* curr = head;
+            LinkedList* prev = NULL;
+             
+            while (curr) {
+                if (strcmp(curr->item->key, key) == 0) {
+                    if (prev == NULL) {
+                        // First element of the chain. Remove the chain
+                        free_linkedlist(head);
+                        table->overflow_buckets[index] = NULL;
+                        return;
+                    }
+                    else {
+                        // This is somewhere in the chain
+                        prev->next = curr->next;
+                        curr->next = NULL;
+                        free_linkedlist(curr);
+                        table->overflow_buckets[index] = head;
+                        return;
+                    }
+                }
+                curr = curr->next;
+                prev = curr;
+            }
+ 
+        }
+    }
 }
  
 void print_search(HashTable* table, char* key) {
@@ -288,7 +351,10 @@ int main() {
     print_search(ht, "2");
     print_search(ht, "3");
     print_search(ht, "Hel");
-    print_search(ht, "Cau");
+    print_search(ht, "Cau");  // Collision!
+    print_table(ht);
+    ht_delete(ht, "1");
+    ht_delete(ht, "Cau");
     print_table(ht);
     free_table(ht);
     return 0;
