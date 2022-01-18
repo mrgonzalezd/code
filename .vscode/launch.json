@@ -35,8 +35,22 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
+            //"MIMode": "~/.vscode/extensions/ms-vscode.cpptools-1.8.0-insiders2/debugAdapters/lldb-mi/bin/lldb-mi",
             "MIMode": "lldb",
             "preLaunchTask": "clang++ build active file"
-          }
+          },
+        {
+            "name": "Launch (lldb)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "miDebuggerPath": "/Users/rmachine/lldb-mi",
+            "environment": [],
+            "externalConsole": false
+        }
+        
     ]
 }
