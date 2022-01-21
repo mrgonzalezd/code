@@ -10,9 +10,9 @@ struct DataItem {
    int key;
 };
 
-struct DataItem* hashArray[SIZE]; 
-struct DataItem* dummyItem;
-struct DataItem* item;
+struct DataItem *hashArray[SIZE]; 
+struct DataItem *dummyItem;
+struct DataItem *item;
 
 int hashCode(int key) {
    return key % SIZE;
@@ -60,7 +60,7 @@ void insert(int key,int data) {
    hashArray[hashIndex] = item;
 }
 
-struct DataItem* remove(struct DataItem* item) {
+struct DataItem *delete(struct DataItem* item) {
    int key = item->key;
 
    //get the hash 
@@ -127,7 +127,7 @@ int main() {
       printf("Element not found\n");
    }
 
-   remove(item);
+   delete(item);
    item = search(37);
 
    if(item != NULL) {
